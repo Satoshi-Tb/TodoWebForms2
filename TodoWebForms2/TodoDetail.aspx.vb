@@ -3,7 +3,7 @@
 
     Private editMode As String
 
-    Private Shared ReadOnly DATE_MATCHER As Regex = New Regex("[0-9]{4}/[01][0-9]/[0-3][0-9]", RegexOptions.Compiled)
+    Private Shared ReadOnly DATE_MATCHER As Regex = New Regex("[0-9]{4}/[0-1]?[0-9]/[0-3]?[0-9]+", RegexOptions.Compiled)
 
     Private Structure EnumEditMode
         Public Const NEW_MODE = "NEW"
@@ -57,8 +57,7 @@
 
     Private Function InputChcek() As Boolean
         If txtTitle.Text = "" Then
-            'TODO メッセージポップアップ見直し（alertに変更する）
-            MsgBox("タイトルを入力して下さい")
+            ShowAlert("タイトルを入力してください")
             Return False
         End If
 
@@ -66,10 +65,15 @@
             Dim dummyDate As Date
             If Not DATE_MATCHER.IsMatch(txtDueDate.Text) OrElse
                 Not Date.TryParse(txtDueDate.Text, dummyDate) Then
-                MsgBox("期限はYYYY/MM/DDの形式で、正しい日付を入力して下さい")
+                ShowAlert("期限はYYYY/M/Dの形式で、正しい日付を入力して下さい")
                 Return False
             End If
         End If
         Return True
     End Function
+
+    Private Sub ShowAlert(msg As String)
+        Dim script As String = $"alert('{msg}');"
+        ClientScript.RegisterStartupScript(Me.GetType(), "ErrorMessage", Script, True)
+    End Sub
 End Class

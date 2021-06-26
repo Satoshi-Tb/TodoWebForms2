@@ -6,6 +6,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>ToDoList</title>
   <link rel="stylesheet" href="style.css">
+  <script type="text/javascript">
+  </script>
 </head>
 <body>
   <form id="form1" runat="server">

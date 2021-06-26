@@ -6,6 +6,7 @@
 <head runat="server">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="stylesheet" href="style.css" />
+  <title>TODOの編集</title>
 </head>
 <body>
   <form id="form1" runat="server">
@@ -23,7 +24,7 @@
           <asp:Label runat="server" ID="lblDeDate" Text="期限" />
         </td>
         <td>
-          <asp:TextBox runat="server" ID="txtDueDate" CssClass="input-text" Width="75px" placeholder="2021/03/05"></asp:TextBox>
+          <asp:TextBox runat="server" ID="txtDueDate" CssClass="input-text" Width="75px" placeholder="2021/3/5"></asp:TextBox>
         </td>
       </tr>
       <tr>
