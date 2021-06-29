@@ -47,10 +47,10 @@
         Dim todo As TodoItem = New TodoItem With {.Title = txtTitle.Text, .DueDate = txtDueDate.Text}
 
         If editMode = EnumEditMode.NEW_MODE Then
-            DBManager.InsertTodo(todo)
+            DBManager.Insert(todo)
         Else
             todo.ID = Integer.Parse(hdnTodoId.Value)
-            DBManager.UpdateTodo(todo)
+            DBManager.Update(todo)
         End If
         Response.Redirect("TodoForm.aspx")
     End Sub
@@ -74,6 +74,6 @@
 
     Private Sub ShowAlert(msg As String)
         Dim script As String = $"alert('{msg}');"
-        ClientScript.RegisterStartupScript(Me.GetType(), "ErrorMessage", Script, True)
+        ClientScript.RegisterStartupScript(Me.GetType(), "ErrorMessage", script, True)
     End Sub
 End Class
